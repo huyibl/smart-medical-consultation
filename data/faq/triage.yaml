@@ -1,0 +1,67 @@
+# 手写导诊 FAQ。知识来自常见分科习惯，非某院号源。
+# 用于「头疼→头痛」验收，并补图谱口语缺口。
+items:
+  - id: faq-headache
+    title: 头痛 / 头疼导诊
+    department: 神经内科
+    aliases: [头疼, 头痛, 脑袋疼, 头晕]
+    text: |
+      口语「头疼」对应规范症状名「头痛」。
+      反复头痛、头晕，常见由神经内科接诊；若伴突发肢体无力或说话含糊，应走急诊而非本科室预约。
+      就诊前可记录头痛频率、持续时长、部位、是否伴恶心或畏光。
+      本条仅供导诊参考，不能替代医生诊断。
+  - id: faq-dizziness
+    title: 头晕导诊
+    department: 神经内科
+    aliases: [头晕, 眩晕]
+    text: |
+      头晕、眩晕常见神经内科或耳鼻喉科鉴别。无明显胸痛、呼吸困难时，可先考虑神经内科。
+  - id: faq-hypertension
+    title: 血压高 / 高血压导诊
+    department: 心血管内科
+    aliases: [血压高, 高血压]
+    text: |
+      口语「血压高」对应疾病名「高血压」。长期血压管理一般挂心血管内科或高血压门诊。
+      本系统不提供调药或剂量建议，须由医生开具长期处方。
+  - id: faq-cough
+    title: 反复咳嗽发热
+    department: 呼吸内科
+    aliases: [咳嗽, 低烧]
+    text: |
+      反复咳嗽伴低热，常见呼吸内科或发热门诊接诊。儿童优先儿科。
+  - id: faq-reflux
+    title: 反酸烧心
+    department: 消化内科
+    aliases: [反酸, 烧心]
+    text: |
+      经常反酸、烧心，夜间加重，常见消化内科。胃镜准备见就诊须知，不做在线诊断。
+  - id: faq-rash
+    title: 皮疹瘙痒
+    department: 皮肤科
+    aliases: [红疹, 皮疹, 皮肤痒]
+    text: |
+      四肢红疹伴明显瘙痒，常见皮肤科；若同时呼吸困难，按急症处理。
+  - id: faq-back
+    title: 腰痛手麻
+    department: 骨科
+    aliases: [腰疼, 腰痛, 手麻]
+    text: |
+      腰痛伴手或腿麻木，常见骨科或脊柱外科，也可能由神经内科鉴别。
+  - id: faq-eye
+    title: 眼红眼痛
+    department: 眼科
+    aliases: [眼红, 眼疼, 怕光]
+    text: |
+      眼睛红、疼、畏光，挂眼科。不在线判断结膜炎或角膜炎。
+  - id: faq-urine
+    title: 尿频尿急
+    department: 泌尿外科
+    aliases: [尿频, 尿急, 尿痛]
+    text: |
+      尿频、尿急、排尿刺痛，常见泌尿外科；女性也可考虑妇科泌尿相关门诊。
+  - id: faq-tooth
+    title: 牙痛
+    department: 口腔科
+    aliases: [牙疼, 牙痛]
+    text: |
+      牙痛影响进食，挂口腔科。本系统不开止痛处方。

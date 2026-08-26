@@ -1,0 +1,100 @@
+# 机器可读安全清单，与 docs/SAFETY_POLICY.md 同步。
+version: 0
+
+disclaimer:
+  required_for: [triage, visit_prep, knowledge, medication_info, refuse, emergency]
+  must_contain_any:
+    - 不能替代
+    - 不构成医疗
+    - 不能替代执业医师
+  text: >
+    本系统仅提供就医导诊与医学科普信息，不能替代执业医师的诊断、处方或治疗。
+    如出现紧急情况，请立即拨打当地急救电话或前往急诊。
+    知识来自公开图谱，不代表任何医院的号源或诊疗意见。
+  medication_extra: >
+    药品信息须遵医嘱或药师指导，切勿自行用药、停药或调整剂量。
+
+emergency:
+  rule_id: R-EMERGENCY-RECALL
+  skip_generation: true
+  keywords:
+    - 胸痛
+    - 胸口剧痛
+    - 胸口痛
+    - 心绞痛
+    - 压榨样胸痛
+    - 心脏病发作
+    - 呼吸困难
+    - 喘不过气
+    - 口唇发紫
+    - 嘴唇发紫
+    - 昏迷
+    - 呼之不应
+    - 晕倒不醒
+    - 一侧肢体无力
+    - 口角歪斜
+    - 说话含糊
+    - 喷血
+    - 一大盆血
+    - 阴道大量出血
+    - 手脚突然没力气
+    - 中风
+    - 脑溢血
+    - 抽搐
+    - 吐血
+    - 呕血
+    - 便血
+    - 咯血
+    - 过敏性休克
+    - 药物中毒
+    - 自杀
+    - 自残
+    - 不想活了
+    - 大出血
+    - 怀孕出血
+    - 阴道大出血
+    - 高热抽搐
+  must_contain:
+    - 急救
+    - 急诊
+  must_not_contain:
+    - 在家观察即可
+    - 先吃药再说
+
+output_banned:
+  rule_ids: [R-NO-DIAGNOSIS, R-NO-PRESCRIPTION]
+  phrases:
+    - 确诊
+    - 诊断你是
+    - 你就是
+    - 可以确定是
+    - 给你开
+    - 开一点
+    - 开具处方
+    - 剂量改为
+    - 停掉
+    - 不用去医院
+    - 保证治好
+    - 一定能好
+
+refuse_triggers:
+  rule_id: R-NO-PRESCRIPTION
+  keywords:
+    - 给我开
+    - 开点药
+    - 开药
+    - 吃什么药
+    - 药名和用法
+    - 剂量加
+    - 加一倍
+    - 停药
+    - 停掉
+    - 换药
+    - 换成
+    - 帮我看化验单
+    - 血常规
+    - 得了什么病
+    - 这个单子是什么病
+    - 确诊我
+    - 我是不是得了
+    - 诊断证明

@@ -1,0 +1,41 @@
+# 与 docs/CONTRACTS.md、eval/gold_v0.json 同步。增删意图先改文档。
+version: 0
+intents:
+  - id: emergency
+    name: 急诊识别
+    must_retrieve: false
+    rule_first: true
+  - id: triage
+    name: 导诊
+    must_retrieve: true
+    rule_first: false
+  - id: visit_prep
+    name: 就诊准备
+    must_retrieve: true
+    rule_first: false
+  - id: knowledge
+    name: 医学科普
+    must_retrieve: true
+    rule_first: false
+  - id: medication_info
+    name: 药品说明
+    must_retrieve: true
+    rule_first: false
+  - id: chitchat
+    name: 闲聊
+    must_retrieve: false
+    rule_first: true
+  - id: refuse
+    name: 拒答
+    must_retrieve: false
+    rule_first: true
+
+routing_order:
+  - emergency
+  - refuse
+  - chitchat
+  - visit_prep
+  - medication_info
+  - knowledge
+  - triage
+  - llm_classify

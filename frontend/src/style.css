@@ -1,0 +1,36 @@
+:root {
+  --ink: #1b2420;
+  --muted: #5c6b63;
+  --paper: #f3efe4;
+  --card: #fffdf8;
+  --line: #d9d2c3;
+  --teal: #0f6e6a;
+  --teal-deep: #0a4d4a;
+  --amber: #f4d27a;
+  --amber-ink: #5c4308;
+  --danger: #9b2c2c;
+  --sidebar: #16302c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}

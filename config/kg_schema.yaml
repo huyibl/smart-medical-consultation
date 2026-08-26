@@ -1,0 +1,136 @@
+# 2026-08-22 Neo4j 实测。tools 只读 measured，不要用 assumed。
+status: measured_labels_pending_edge_direction
+source:
+  name: OpenKG 面向家庭常见疾病的知识图谱
+  url: http://openkg.cn/dataset/medicalgraph
+  license: CC-BY-SA-4.0
+  measured_node_count: 62196
+  measured_at: "2026-08-22"
+
+name_property: 名称
+
+node_labels:
+  Disease:
+    assumed: Disease
+    measured: 疾病
+    count: 11871
+    text_properties: [描述, 病因, 预防方法]
+    extra_properties: [治愈概率, 易得人群, 治疗时长]
+  Symptom:
+    assumed: Symptom
+    measured: 症状
+    count: 16091
+  Department:
+    assumed: Department
+    measured: 二级科室
+    count: 44
+    note: 导诊主推荐用二级科室；一级科室仅 10 个大类
+  DepartmentL1:
+    assumed: null
+    measured: 一级科室
+    count: 10
+  Drug:
+    assumed: Drug
+    measured: 药物
+    count: 6017
+  Check:
+    assumed: Check
+    measured: 检查手段
+    count: 5529
+  Treatment:
+    assumed: null
+    measured: 治疗方案
+    count: 544
+  Food:
+    assumed: Food
+    measured: 食物
+    count: 364
+  Recipe:
+    assumed: Recipe
+    measured: 食谱
+    count: 4506
+  Producer:
+    assumed: Producer
+    measured: 生产商
+    count: 17201
+    online: false
+  Other:
+    assumed: null
+    measured: 其他
+    count: 19
+    online: false
+
+relationship_types:
+  HAS_SYMPTOM:
+    assumed: has_symptom
+    measured: 症状
+    from: 疾病
+    to: 症状
+    direction_verified: false
+    online: true
+  BELONGS_TO_DEPT:
+    assumed: belongs_to
+    measured: 所属科室
+    from: 疾病
+    to: [二级科室, 一级科室]
+    direction_verified: false
+    online: true
+  DEPT_PARENT:
+    assumed: null
+    measured: 属于
+    from: 二级科室
+    to: 一级科室
+    direction_verified: false
+    online: true
+  COMMON_DRUG:
+    assumed: common_drug
+    measured: 常用药品
+    from: 疾病
+    to: 药物
+    direction_verified: false
+    online: true
+  RATED_DRUG:
+    assumed: recommand_drug
+    measured: 好评药品
+    from: 疾病
+    to: 药物
+    direction_verified: false
+    online: true
+  NEED_CHECK:
+    assumed: need_check
+    measured: 诊断检查
+    from: 疾病
+    to: 检查手段
+    direction_verified: false
+    online: true
+  ACOMPANY_WITH:
+    assumed: acompany_with
+    measured: 并发症
+    from: 疾病
+    to: 疾病
+    online: false
+  TREATMENT:
+    assumed: null
+    measured: 治疗方法
+    from: 疾病
+    to: 治疗方案
+    online: false
+  DO_EAT:
+    assumed: do_eat
+    measured: 宜吃
+    online: false
+  NOT_EAT:
+    assumed: not_eat
+    measured: 忌吃
+    online: false
+  RECIPE:
+    assumed: null
+    measured: 推荐食谱
+    online: false
+  PRODUCES:
+    assumed: drugs_of
+    measured: 生产药品
+    online: false
+
+entity_link_threshold: 0.85
+text2cypher_enabled: false

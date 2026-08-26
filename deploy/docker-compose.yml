@@ -1,0 +1,65 @@
+# 默认只起 API，连本机已导入的 Neo4j（host.docker.internal）。
+# 不要无 profile 再起一份空 Neo4j，以免占 7687。
+# 需要空库时：docker compose --profile neo4j up
+# Redis / MySQL 可选：--profile redis --profile mysql
+name: smc
+
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    ports:
+      - "${API_PORT:-8000}:8000"
+    env_file:
+      - ../.env
+    environment:
+      API_HOST: "0.0.0.0"
+      API_PORT: "8000"
+      NEO4J_URI: ${NEO4J_URI:-bolt://host.docker.internal:7687}
+      LOG_JSON: ${LOG_JSON:-true}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ../data:/app/data
+    restart: unless-stopped
+
+  neo4j:
+    profiles: ["neo4j"]
+    image: neo4j:5.26.0
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: neo4j/${NEO4J_PASSWORD:-medicalgraph}
+      NEO4J_PLUGINS: '["apoc"]'
+    volumes:
+      - neo4j_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:7474 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    profiles: ["redis"]
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  mysql:
+    profiles: ["mysql"]
+    image: mysql:8.4
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-smc}
+      MYSQL_DATABASE: smc
+      MYSQL_USER: smc
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-smc}
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  neo4j_data:
+  mysql_data:
